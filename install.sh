@@ -1,6 +1,10 @@
 passwd
 apt update
 apt install ufw apache2 python3-certbot-apache
+ufw enable
+ufw allow 22
+ufw allow 80
+ufw allow 443
 ls /etc/apache2/sites-available/
 a2dissite 000-default
 rm /etc/apache2/sites-available/000-default.conf
