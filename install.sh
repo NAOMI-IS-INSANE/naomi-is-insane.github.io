@@ -18,14 +18,14 @@ while true; do
 
     # Update package list
     apt update
-    check_status "apt update"
+    check_status "apt update" > /var/myLogs/aptUpdate 2>&1
 
     # Install necessary packages
-    apt install -y ufw apache2 python3-certbot-apache
+    apt install -y ufw apache2 python3-certbot-apache > /var/myLogs/aptInstall 2>&1
     check_status "apt install"
 
     # Enable firewall
-    echo "yes" | ufw enable | tee /var/myLogs/ufwSetup
+    echo "yes" | ufw enable > /var/myLogs/ufwSetup 2>&1
     check_status "ufw enable"
 
     # Allow SSH, HTTP, and HTTPS
