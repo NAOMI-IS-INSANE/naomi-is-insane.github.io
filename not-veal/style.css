@@ -2,3 +2,8 @@ body {
   background-color: black;
   color: lightgray;
 }
+
+table.main {
+  margin-left: auto;
+  margin-right: auto;
+}
