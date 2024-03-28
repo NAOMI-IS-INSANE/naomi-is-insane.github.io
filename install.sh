@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir /var/myLogs/
+
 # Function to check the exit status of commands
 check_status() {
     if [ $? -ne 0 ]; then
