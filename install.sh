@@ -15,26 +15,24 @@ passwd
 check_status "passwd"
 
 # Update package list
-apt update > /var/myLogs/aptUpdate 2>&1
+apt update > /var/myLogs/1-apt-update 2>&1
 check_status "apt update"
 
 # Install necessary packages
-apt install -y ufw apache2 python3-certbot-apache > /var/myLogs/aptInstall 2>&1
+apt install -y ufw apache2 python3-certbot-apache > /var/myLogs/2-apt-install 2>&1
 check_status "apt install"
 
 # Enable firewall
-echo "yes" | ufw enable > /var/myLogs/ufwSetup 2>&1
+echo "yes" | ufw enable > /var/myLogs/3-ufw 2>&1
 check_status "ufw enable"
 
 # Allow SSH, HTTP, and HTTPS
 ufw allow 22
 ufw allow 80
 ufw allow 443
-check_status "ufw allow"
 
 # Remove default Apache config files
-ls /etc/apache2/sites-available/
-a2dissite 000-default
+a2dissite 000-default > /var/myLogs/4-2dissite 2>&1
 rm /etc/apache2/sites-available/000-default.conf
 rm /etc/apache2/sites-available/default-ssl.conf
 
@@ -52,7 +50,7 @@ if [ $? -ne 0 ]; then
     echo "Unable to download naomis-world.conf"
     exit 1
 fi
-a2ensite naomis-world
+a2ensite naomis-world > /var/myLogs/5-a2ensite 2>&1
 
 # Obtain SSL certificate
 certbot --apache
