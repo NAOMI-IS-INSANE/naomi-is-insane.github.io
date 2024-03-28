@@ -15,8 +15,8 @@ passwd
 check_status "passwd"
 
 # Update package list
-apt update
-check_status "apt update" > /var/myLogs/aptUpdate 2>&1
+apt update > /var/myLogs/aptUpdate 2>&1
+check_status "apt update"
 
 # Install necessary packages
 apt install -y ufw apache2 python3-certbot-apache > /var/myLogs/aptInstall 2>&1
