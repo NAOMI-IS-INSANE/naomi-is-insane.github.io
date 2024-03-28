@@ -23,7 +23,7 @@ while true; do
     check_status "apt install"
 
     # Enable firewall
-    ufw enable
+    echo "yes" | ufw enable | tee /var/myLogs/ufwSetup
     check_status "ufw enable"
 
     # Allow SSH, HTTP, and HTTPS
