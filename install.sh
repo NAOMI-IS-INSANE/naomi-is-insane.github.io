@@ -2,6 +2,27 @@
 
 mkdir /var/myLogs/
 
+# Set locale variables
+export LANGUAGE=en_AU.UTF-8
+export LC_ALL=en_AU.UTF-8
+export LC_TIME=en_AU.UTF-8
+export LANG=en_AU.UTF-8
+
+# Update locale to English (Australia)
+echo "en_AU.UTF-8 UTF-8" > /etc/locale.gen
+locale-gen
+update-locale LANG=en_AU.UTF-8
+
+# Set timezone to Adelaide
+timedatectl set-timezone Australia/Adelaide
+
+# Verify changes
+echo "Locale has been set to English (Australia) and timezone to Adelaide."
+echo "Current Locale Settings:"
+locale
+echo "Current Timezone:"
+timedatectl
+
 # Function to check the exit status of commands
 check_status() {
     if [ $? -ne 0 ]; then
